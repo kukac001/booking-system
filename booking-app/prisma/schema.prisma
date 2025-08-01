@@ -23,8 +23,9 @@ model User {
     address String
     phoneNumber String
     email   String  @unique
+    userName String @unique
     passwordHash String
-    credit Int
+    credit Int @default(0)
     bankCard String
     permission String
 }
