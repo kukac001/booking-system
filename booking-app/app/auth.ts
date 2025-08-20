@@ -20,4 +20,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      console.log("url", url);
+      console.log("baseUrl", baseUrl);
+
+      return url;
+    },
+  },
 });

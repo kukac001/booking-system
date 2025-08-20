@@ -6,7 +6,18 @@ const Login = () => {
       <form
         action={async (formData) => {
           "use server";
-          await signIn("credentials", formData);
+          try {
+            const email = formData.get("email");
+            const password = formData.get("password");
+            await signIn("credentials", {
+              email,
+              password,
+              redirectTo: "/profile",
+            });
+          } catch (error) {
+            console.log("Error", error);
+            throw error;
+          }
         }}
       >
         <input
