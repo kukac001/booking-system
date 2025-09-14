@@ -7,7 +7,6 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     const {
-      salt,
       type,
       name,
       birthDate,
@@ -44,7 +43,6 @@ export async function POST(req: Request) {
     const hashedPassword = await hash(passwordHash, 10);
     const newUser = await db.user.create({
       data: {
-        salt,
         type,
         name,
         birthDate,
