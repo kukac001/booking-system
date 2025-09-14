@@ -5,7 +5,7 @@ import { hash } from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { v4 as uuid } from "uuid";
-import { encode as defaultEncode } from "next-auth/jwt";
+import { encode } from "next-auth/jwt";
 
 const adapter = PrismaAdapter(db);
 
@@ -79,7 +79,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         return sessionToken;
       }
-      return defaultEncode(params);
+      return encode(params);
     },
   },
 });
